@@ -10,10 +10,20 @@
 		0B88AAC32370B9FF002D44BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAC22370B9FF002D44BF /* AppDelegate.swift */; };
 		0B88AAC52370B9FF002D44BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAC42370B9FF002D44BF /* SceneDelegate.swift */; };
 		0B88AAC72370B9FF002D44BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAC62370B9FF002D44BF /* ViewController.swift */; };
-		0B88AACA2370B9FF002D44BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B88AAC82370B9FF002D44BF /* Main.storyboard */; };
 		0B88AACC2370BA01002D44BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B88AACB2370BA01002D44BF /* Assets.xcassets */; };
 		0B88AACF2370BA01002D44BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B88AACD2370BA01002D44BF /* LaunchScreen.storyboard */; };
 		0B88AADA2370BA01002D44BF /* Foursquare_Map_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAD92370BA01002D44BF /* Foursquare_Map_ProjectTests.swift */; };
+		0B88AAE62370C13C002D44BF /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAE52370C13C002D44BF /* Secrets.swift */; };
+		0B88AAED2370C832002D44BF /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAEC2370C832002D44BF /* SearchController.swift */; };
+		0B88AAEF2370C8A8002D44BF /* CollectionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAEE2370C8A8002D44BF /* CollectionsController.swift */; };
+		0B88AAF12370C8BD002D44BF /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAF02370C8BD002D44BF /* AppError.swift */; };
+		0B88AAF32370C8EC002D44BF /* Network Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAF22370C8EC002D44BF /* Network Helper.swift */; };
+		0B88AAF52370C90B002D44BF /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAF42370C90B002D44BF /* ImageHelper.swift */; };
+		0B88AAF72370C97C002D44BF /* ZipCodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAF62370C97C002D44BF /* ZipCodeHelper.swift */; };
+		0B88AAF92370C9A4002D44BF /* VenueSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAF82370C9A4002D44BF /* VenueSearchModel.swift */; };
+		0B88AAFB2370C9BA002D44BF /* VenuePhotosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAFA2370C9BA002D44BF /* VenuePhotosModel.swift */; };
+		0B88AAFD2370C9DA002D44BF /* VenueSearchAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAFC2370C9DA002D44BF /* VenueSearchAPIClient.swift */; };
+		0B88AAFF2370C9EC002D44BF /* VenuePhotosAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAFE2370C9EC002D44BF /* VenuePhotosAPIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +41,23 @@
 		0B88AAC22370B9FF002D44BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B88AAC42370B9FF002D44BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0B88AAC62370B9FF002D44BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0B88AAC92370B9FF002D44BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0B88AACB2370BA01002D44BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B88AACE2370BA01002D44BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B88AAD02370BA01002D44BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B88AAD52370BA01002D44BF /* Foursquare-Map-ProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Foursquare-Map-ProjectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B88AAD92370BA01002D44BF /* Foursquare_Map_ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foursquare_Map_ProjectTests.swift; sourceTree = "<group>"; };
 		0B88AADB2370BA01002D44BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B88AAE52370C13C002D44BF /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		0B88AAEC2370C832002D44BF /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		0B88AAEE2370C8A8002D44BF /* CollectionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsController.swift; sourceTree = "<group>"; };
+		0B88AAF02370C8BD002D44BF /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		0B88AAF22370C8EC002D44BF /* Network Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Network Helper.swift"; sourceTree = "<group>"; };
+		0B88AAF42370C90B002D44BF /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		0B88AAF62370C97C002D44BF /* ZipCodeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipCodeHelper.swift; sourceTree = "<group>"; };
+		0B88AAF82370C9A4002D44BF /* VenueSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueSearchModel.swift; sourceTree = "<group>"; };
+		0B88AAFA2370C9BA002D44BF /* VenuePhotosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuePhotosModel.swift; sourceTree = "<group>"; };
+		0B88AAFC2370C9DA002D44BF /* VenueSearchAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueSearchAPIClient.swift; sourceTree = "<group>"; };
+		0B88AAFE2370C9EC002D44BF /* VenuePhotosAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuePhotosAPIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,10 +99,14 @@
 		0B88AAC12370B9FF002D44BF /* Foursquare-Map-Project */ = {
 			isa = PBXGroup;
 			children = (
+				0B88AAEB2370C5C2002D44BF /* Networking */,
+				0B88AAEA2370C5A9002D44BF /* Controllers */,
+				0B88AAE92370C545002D44BF /* Views */,
+				0B88AAE82370C53E002D44BF /* Models */,
+				0B88AAE42370C10D002D44BF /* API-Key */,
 				0B88AAC22370B9FF002D44BF /* AppDelegate.swift */,
 				0B88AAC42370B9FF002D44BF /* SceneDelegate.swift */,
 				0B88AAC62370B9FF002D44BF /* ViewController.swift */,
-				0B88AAC82370B9FF002D44BF /* Main.storyboard */,
 				0B88AACB2370BA01002D44BF /* Assets.xcassets */,
 				0B88AACD2370BA01002D44BF /* LaunchScreen.storyboard */,
 				0B88AAD02370BA01002D44BF /* Info.plist */,
@@ -97,6 +121,52 @@
 				0B88AADB2370BA01002D44BF /* Info.plist */,
 			);
 			path = "Foursquare-Map-ProjectTests";
+			sourceTree = "<group>";
+		};
+		0B88AAE42370C10D002D44BF /* API-Key */ = {
+			isa = PBXGroup;
+			children = (
+				0B88AAE52370C13C002D44BF /* Secrets.swift */,
+			);
+			path = "API-Key";
+			sourceTree = "<group>";
+		};
+		0B88AAE82370C53E002D44BF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0B88AAF82370C9A4002D44BF /* VenueSearchModel.swift */,
+				0B88AAFA2370C9BA002D44BF /* VenuePhotosModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0B88AAE92370C545002D44BF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0B88AAEA2370C5A9002D44BF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0B88AAEC2370C832002D44BF /* SearchController.swift */,
+				0B88AAEE2370C8A8002D44BF /* CollectionsController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0B88AAEB2370C5C2002D44BF /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				0B88AAF02370C8BD002D44BF /* AppError.swift */,
+				0B88AAF62370C97C002D44BF /* ZipCodeHelper.swift */,
+				0B88AAF22370C8EC002D44BF /* Network Helper.swift */,
+				0B88AAF42370C90B002D44BF /* ImageHelper.swift */,
+				0B88AAFC2370C9DA002D44BF /* VenueSearchAPIClient.swift */,
+				0B88AAFE2370C9EC002D44BF /* VenuePhotosAPIClient.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,7 +252,6 @@
 			files = (
 				0B88AACF2370BA01002D44BF /* LaunchScreen.storyboard in Resources */,
 				0B88AACC2370BA01002D44BF /* Assets.xcassets in Resources */,
-				0B88AACA2370B9FF002D44BF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,8 +270,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B88AAC72370B9FF002D44BF /* ViewController.swift in Sources */,
+				0B88AAF32370C8EC002D44BF /* Network Helper.swift in Sources */,
+				0B88AAFB2370C9BA002D44BF /* VenuePhotosModel.swift in Sources */,
+				0B88AAF52370C90B002D44BF /* ImageHelper.swift in Sources */,
+				0B88AAF92370C9A4002D44BF /* VenueSearchModel.swift in Sources */,
+				0B88AAED2370C832002D44BF /* SearchController.swift in Sources */,
+				0B88AAFF2370C9EC002D44BF /* VenuePhotosAPIClient.swift in Sources */,
+				0B88AAF72370C97C002D44BF /* ZipCodeHelper.swift in Sources */,
+				0B88AAE62370C13C002D44BF /* Secrets.swift in Sources */,
+				0B88AAFD2370C9DA002D44BF /* VenueSearchAPIClient.swift in Sources */,
+				0B88AAEF2370C8A8002D44BF /* CollectionsController.swift in Sources */,
 				0B88AAC32370B9FF002D44BF /* AppDelegate.swift in Sources */,
 				0B88AAC52370B9FF002D44BF /* SceneDelegate.swift in Sources */,
+				0B88AAF12370C8BD002D44BF /* AppError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,14 +305,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		0B88AAC82370B9FF002D44BF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0B88AAC92370B9FF002D44BF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0B88AACD2370BA01002D44BF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
