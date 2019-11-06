@@ -25,6 +25,8 @@
 		0B88AAFD2370C9DA002D44BF /* VenueSearchAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAFC2370C9DA002D44BF /* VenueSearchAPIClient.swift */; };
 		0B88AAFF2370C9EC002D44BF /* VenuePhotosAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAFE2370C9EC002D44BF /* VenuePhotosAPIClient.swift */; };
 		0B88AB012370DF02002D44BF /* Venue.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B88AB002370DF02002D44BF /* Venue.json */; };
+		0B88AB30237310F0002D44BF /* VenueSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAF82370C9A4002D44BF /* VenueSearchModel.swift */; };
+		0B88AB31237310F3002D44BF /* Venue.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B88AB002370DF02002D44BF /* Venue.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -263,6 +265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B88AB31237310F3002D44BF /* Venue.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B88AADA2370BA01002D44BF /* Foursquare_Map_ProjectTests.swift in Sources */,
+				0B88AB30237310F0002D44BF /* VenueSearchModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,25 @@ import XCTest
 
 class Foursquare_Map_ProjectTests: XCTestCase {
 
+    private func getVenueData() -> Data {
+        guard let pathToData = Bundle.main.path(forResource: "Venue", ofType: "json")
+            else {
+                fatalError("Venue.json file not found")
+        }
+          let url = URL(fileURLWithPath: pathToData)
+        do {
+            let data = try Data(contentsOf: url)
+            return data
+        } catch let jsonError {
+            fatalError("could not find file: \(jsonError)")
+        }
+    }
+    
+    func testVenueDataLoad(){
+        let venue = Venue.getVenueData()
+        XCTAssert((venue.response?.venues!.count)! > 0, "donde esta data?" )
+    }
+
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }

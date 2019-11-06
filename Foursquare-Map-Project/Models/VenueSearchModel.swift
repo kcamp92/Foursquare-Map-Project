@@ -20,7 +20,7 @@ struct Venues: Codable {
 struct Meta: Codable {
     let code: Int?
     let requestID: String?
-
+    
 }
 
 // MARK: - Response
@@ -37,23 +37,36 @@ struct Venue: Codable {
     let referralID: String?
     let hasPerk: Bool?
     let venuePage: VenuePage?
-
+    
     enum CodingKeys: String, CodingKey {
         case id, name, location, categories, delivery
         case referralID = "referralId"
         case hasPerk, venuePage
     }
     
-    static func getVenues(from jsonData: Data) -> [Venues]? {
+    
+    enum JSONError: Error {
+        case decodingError(Error)
+    }
+    
+    static func getVenueData() -> Venues{
+        guard let fileName = Bundle.main.path(forResource: "Venue", ofType: "json")
+            else {fatalError()}
+        let fileURL = URL(fileURLWithPath: fileName)
         do {
-            let data = try JSONDecoder().decode(Venues.self, from: jsonData)
-            return data
+            let data = try Data(contentsOf: fileURL)
+            let venue = try
+                JSONDecoder().decode(Venues.self, from: data)
+            return venue
+                
+             //   venue.response?.venues
         } catch {
-            print("Decoding error: \(error)")
-            return nil
+            fatalError("\(error)")
         }
     }
+    
 }
+
 
 // MARK: - Category
 struct Category: Codable {
@@ -69,13 +82,9 @@ struct Category: Codable {
 struct CategoryIcon: Codable {
     let iconPrefix: String?
     let suffix: String?
-
-
+    
+    
 }
-
-
-
-
 
 // MARK: - Delivery
 struct Delivery: Codable {
@@ -95,8 +104,8 @@ struct ProviderIcon: Codable {
     let iconPrefix: String?
     let sizes: [Int]?
     let name: String?
-
-   
+    
+    
 }
 
 // MARK: - Location
