@@ -8,35 +8,41 @@
 
 import Foundation
 
-/*import Foundation
+class VenuePhotoAPIClient {
 
-class WeatherAPIClient {
-    
     private init() {}
-    static let shared = WeatherAPIClient()
-    
-    func getWeather(latLong: String,completionHandler: @escaping (Result<[WeatherData], AppError>)-> Void){
+    static let shared = VenuePhotoAPIClient()
+
+    func getVenues(latLong: String, venueId: String, completionHandler: @escaping (Result<[Venue], AppError>)-> Void){
+
+        let URLString = "https://api.foursquare.com/v2/venues/\(venueId)/photos?client_id=\(Secrets.id)&client_secret=\(Secrets.key)&v=20191104&limit=1"
         
-        let URLString = "https://api.darksky.net/forecast/\(Secrets.key)/\(latLong)"
-        guard let url = URL(string: URLString) else {completionHandler(.failure(AppError.badURL))
+
+        
+        guard let url = URL(string: URLString) else {
+            
+            completionHandler(.failure(AppError.badURL))
             return
         }
-    NetworkHelper.manager.performDataTask(withUrl: url, andMethod: .get) { (results)in
-        switch results {
-        case .failure(let error):
-            completionHandler(.failure(error))
-        case .success(let data):
-            do {
-        let weatherDecoded = try JSONDecoder().decode(Weather.self, from: data)
-                completionHandler(.success(weatherDecoded.daily.data))
-            } catch {
-        completionHandler(.failure(AppError.couldNotParseJSON(rawError:error)))
-                        }
+            
+        
+        NetworkHelper.manager.performDataTask(withUrl: url, andMethod: .get){(results)in
+            switch results {
+            case .failure(let error):
+                completionHandler(.failure(error))
+            case .success(let data):
+                do {
+                    let venuesDecoded = try JSONDecoder().decode(Venues.self, from: data)
+                    if let venue = venuesDecoded.response?.venues {
+                    completionHandler(.success(venue))
                     }
+                }catch{
+                    completionHandler(.failure(AppError.couldNotParseJSON(rawError: error)))
                 }
             }
         }
-*/
+    }
+}
 
 
 //https://api.foursquare.com/v2/venues/VENUE_ID/photos

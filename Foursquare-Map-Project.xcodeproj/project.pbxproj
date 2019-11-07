@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0B88AAC32370B9FF002D44BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAC22370B9FF002D44BF /* AppDelegate.swift */; };
 		0B88AAC52370B9FF002D44BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAC42370B9FF002D44BF /* SceneDelegate.swift */; };
-		0B88AAC72370B9FF002D44BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAC62370B9FF002D44BF /* ViewController.swift */; };
 		0B88AACC2370BA01002D44BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B88AACB2370BA01002D44BF /* Assets.xcassets */; };
 		0B88AACF2370BA01002D44BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B88AACD2370BA01002D44BF /* LaunchScreen.storyboard */; };
 		0B88AADA2370BA01002D44BF /* Foursquare_Map_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAD92370BA01002D44BF /* Foursquare_Map_ProjectTests.swift */; };
@@ -27,6 +26,9 @@
 		0B88AB012370DF02002D44BF /* Venue.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B88AB002370DF02002D44BF /* Venue.json */; };
 		0B88AB30237310F0002D44BF /* VenueSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAF82370C9A4002D44BF /* VenueSearchModel.swift */; };
 		0B88AB31237310F3002D44BF /* Venue.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B88AB002370DF02002D44BF /* Venue.json */; };
+		0B88AB3523737F7B002D44BF /* foodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AB3423737F7B002D44BF /* foodCell.swift */; };
+		0B8AD7402374CBF100578E2E /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8AD73F2374CBF100578E2E /* PersistenceHelper.swift */; };
+		0B8AD7422374CC3A00578E2E /* CollectionsPersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8AD7412374CC3A00578E2E /* CollectionsPersistenceHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +45,6 @@
 		0B88AABF2370B9FF002D44BF /* Foursquare-Map-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Foursquare-Map-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B88AAC22370B9FF002D44BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B88AAC42370B9FF002D44BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0B88AAC62370B9FF002D44BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0B88AACB2370BA01002D44BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B88AACE2370BA01002D44BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B88AAD02370BA01002D44BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,6 +63,9 @@
 		0B88AAFC2370C9DA002D44BF /* VenueSearchAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueSearchAPIClient.swift; sourceTree = "<group>"; };
 		0B88AAFE2370C9EC002D44BF /* VenuePhotosAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuePhotosAPIClient.swift; sourceTree = "<group>"; };
 		0B88AB002370DF02002D44BF /* Venue.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Venue.json; sourceTree = "<group>"; };
+		0B88AB3423737F7B002D44BF /* foodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = foodCell.swift; sourceTree = "<group>"; };
+		0B8AD73F2374CBF100578E2E /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
+		0B8AD7412374CC3A00578E2E /* CollectionsPersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsPersistenceHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,13 +108,13 @@
 			isa = PBXGroup;
 			children = (
 				0B88AAEB2370C5C2002D44BF /* Networking */,
+				0B8AD73E2374CBDB00578E2E /* Persistence */,
 				0B88AAEA2370C5A9002D44BF /* Controllers */,
 				0B88AAE92370C545002D44BF /* Views */,
 				0B88AAE82370C53E002D44BF /* Models */,
 				0B88AAE42370C10D002D44BF /* API-Key */,
 				0B88AAC22370B9FF002D44BF /* AppDelegate.swift */,
 				0B88AAC42370B9FF002D44BF /* SceneDelegate.swift */,
-				0B88AAC62370B9FF002D44BF /* ViewController.swift */,
 				0B88AACB2370BA01002D44BF /* Assets.xcassets */,
 				0B88AACD2370BA01002D44BF /* LaunchScreen.storyboard */,
 				0B88AAD02370BA01002D44BF /* Info.plist */,
@@ -148,6 +152,7 @@
 		0B88AAE92370C545002D44BF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0B88AB3423737F7B002D44BF /* foodCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,6 +177,15 @@
 				0B88AAFE2370C9EC002D44BF /* VenuePhotosAPIClient.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		0B8AD73E2374CBDB00578E2E /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				0B8AD73F2374CBF100578E2E /* PersistenceHelper.swift */,
+				0B8AD7412374CC3A00578E2E /* CollectionsPersistenceHelper.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,11 +290,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B88AAC72370B9FF002D44BF /* ViewController.swift in Sources */,
 				0B88AAF32370C8EC002D44BF /* NetworkHelper.swift in Sources */,
 				0B88AAFB2370C9BA002D44BF /* VenuePhotosModel.swift in Sources */,
 				0B88AAF52370C90B002D44BF /* ImageHelper.swift in Sources */,
+				0B88AB3523737F7B002D44BF /* foodCell.swift in Sources */,
 				0B88AAF92370C9A4002D44BF /* VenueSearchModel.swift in Sources */,
+				0B8AD7422374CC3A00578E2E /* CollectionsPersistenceHelper.swift in Sources */,
 				0B88AAED2370C832002D44BF /* SearchController.swift in Sources */,
 				0B88AAFF2370C9EC002D44BF /* VenuePhotosAPIClient.swift in Sources */,
 				0B88AAF72370C97C002D44BF /* ZipCodeHelper.swift in Sources */,
@@ -289,6 +304,7 @@
 				0B88AAEF2370C8A8002D44BF /* CollectionsController.swift in Sources */,
 				0B88AAC32370B9FF002D44BF /* AppDelegate.swift in Sources */,
 				0B88AAC52370B9FF002D44BF /* SceneDelegate.swift in Sources */,
+				0B8AD7402374CBF100578E2E /* PersistenceHelper.swift in Sources */,
 				0B88AAF12370C8BD002D44BF /* AppError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
