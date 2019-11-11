@@ -26,7 +26,7 @@
 		0B88AB012370DF02002D44BF /* Venue.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B88AB002370DF02002D44BF /* Venue.json */; };
 		0B88AB30237310F0002D44BF /* VenueSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAF82370C9A4002D44BF /* VenueSearchModel.swift */; };
 		0B88AB31237310F3002D44BF /* Venue.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B88AB002370DF02002D44BF /* Venue.json */; };
-		0B88AB3523737F7B002D44BF /* foodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AB3423737F7B002D44BF /* foodCell.swift */; };
+		0B88AB3523737F7B002D44BF /* mapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AB3423737F7B002D44BF /* mapCell.swift */; };
 		0B8AD7402374CBF100578E2E /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8AD73F2374CBF100578E2E /* PersistenceHelper.swift */; };
 		0B8AD7422374CC3A00578E2E /* CollectionsPersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8AD7412374CC3A00578E2E /* CollectionsPersistenceHelper.swift */; };
 /* End PBXBuildFile section */
@@ -63,7 +63,7 @@
 		0B88AAFC2370C9DA002D44BF /* VenueSearchAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueSearchAPIClient.swift; sourceTree = "<group>"; };
 		0B88AAFE2370C9EC002D44BF /* VenuePhotosAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuePhotosAPIClient.swift; sourceTree = "<group>"; };
 		0B88AB002370DF02002D44BF /* Venue.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Venue.json; sourceTree = "<group>"; };
-		0B88AB3423737F7B002D44BF /* foodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = foodCell.swift; sourceTree = "<group>"; };
+		0B88AB3423737F7B002D44BF /* mapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapCell.swift; sourceTree = "<group>"; };
 		0B8AD73F2374CBF100578E2E /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
 		0B8AD7412374CC3A00578E2E /* CollectionsPersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsPersistenceHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,7 +152,7 @@
 		0B88AAE92370C545002D44BF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0B88AB3423737F7B002D44BF /* foodCell.swift */,
+				0B88AB3423737F7B002D44BF /* mapCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -293,7 +293,7 @@
 				0B88AAF32370C8EC002D44BF /* NetworkHelper.swift in Sources */,
 				0B88AAFB2370C9BA002D44BF /* VenuePhotosModel.swift in Sources */,
 				0B88AAF52370C90B002D44BF /* ImageHelper.swift in Sources */,
-				0B88AB3523737F7B002D44BF /* foodCell.swift in Sources */,
+				0B88AB3523737F7B002D44BF /* mapCell.swift in Sources */,
 				0B88AAF92370C9A4002D44BF /* VenueSearchModel.swift in Sources */,
 				0B8AD7422374CC3A00578E2E /* CollectionsPersistenceHelper.swift in Sources */,
 				0B88AAED2370C832002D44BF /* SearchController.swift in Sources */,

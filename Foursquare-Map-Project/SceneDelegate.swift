@@ -59,8 +59,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navBar = UINavigationController(rootViewController: SearchController())
         
         navBar.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        collectionsVC.tabBarItem = UITabBarItem(title: "Collection", image: UIImage(named: "collection-icon"), tag: 1)
-        
+        collectionsVC.tabBarItem = UITabBarItem(title: "Collection", image: UIImage(systemName: "folder.badge.plus"), tag: 1)
         let tabVC = UITabBarController()
         tabVC.setViewControllers([navBar,collectionsVC], animated: false)
         

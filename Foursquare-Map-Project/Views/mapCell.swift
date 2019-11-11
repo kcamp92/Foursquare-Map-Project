@@ -8,6 +8,6 @@
 
 import UIKit
 
-class foodCell: UICollectionViewCell {
+class mapCell: UICollectionViewCell {
     
 }
