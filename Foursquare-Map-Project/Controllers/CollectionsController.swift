@@ -11,7 +11,25 @@ import UIKit
 private let cellIdentifier = "collectionCell"
 
 class CollectionsController: UIViewController {
-
+    
+ // MARK: - UI Properties
+    
+    lazy var collectionsCV: UICollectionView = {
+     var layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
+     let cv = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout)
+     //let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+     layout.itemSize = CGSize(width: 175, height: 175)
+     layout.scrollDirection = .horizontal
+     cv.backgroundColor = .systemGreen
+     cv.register(mapCell.self, forCellWithReuseIdentifier: cellIdentifier)
+     //cv.layer.borderColor = UIColor.black.cgColor
+    // cv.layer.borderWidth = 2
+     //cv.layer.cornerRadius = 20
+     //cv.delegate = self
+     //cv.dataSource = self
+     return cv
+     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,32 +38,16 @@ class CollectionsController: UIViewController {
     
 
 }
-/*    // MARK: UI Objects
-    lazy var collectionsCV: UICollectionView = {
-        let tv = UICollectionView()
-        tv.backgroundColor = .white
-        tv.register(CollectionsCVCell.self, forCellWithReuseIdentifier: "CollectionsCVCell")
-        return tv
-    }()
-
-    // MARK: - Lifecycle Methods
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        addSubViews()
-        constrainTableView()
-    }
-    
-    // MARK: - Private Methods
-    private func addSubViews() {
-        view.addSubview(collectionsCV)
-    }
-    
-    // MARK: - Constraint Methods
-    private func constrainTableView() {
-        collectionsCV.translatesAutoresizingMaskIntoConstraints = false
-        
-        [collectionsCV.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor), collectionsCV.leadingAnchor.constraint(equalTo: view.leadingAnchor), collectionsCV.trailingAnchor.constraint(equalTo: view.trailingAnchor), collectionsCV.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)].forEach({$0.isActive = true})
-    }
-    
-
-}*/
+//extension CollectionsController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+//    
+//    
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        <#code#>
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        <#code#>
+//}
+//
+//
+//}

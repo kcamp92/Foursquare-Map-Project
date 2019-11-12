@@ -10,17 +10,15 @@ import UIKit
 
 class collectionCell: UICollectionViewCell {
     
-}
-/*
-    // MARK: - UI Objects
-    lazy var venueImage: UIImageView = {
-        let img = UIImageView()
-        return img
+    // MARK: - UI Properties
+    
+    lazy var foodImage: UIImageView = {
+        let iv = UIImageView()
+        return iv
     }()
     
-    lazy var collectionNameLabel: UILabel = {
+    lazy var collectionLabel: UILabel = {
         let label = UILabel()
         return label
     }()
 }
-*/
