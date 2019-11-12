@@ -57,11 +57,11 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
     //let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
     layout.itemSize = CGSize(width: 175, height: 175)
     layout.scrollDirection = .horizontal
-    cv.backgroundColor = #colorLiteral(red: 0.7394374013, green: 0.6397964358, blue: 0.9213000536, alpha: 1)
+    cv.backgroundColor = .clear
     cv.register(mapCell.self, forCellWithReuseIdentifier: cellIdentifier)
-    cv.layer.borderColor = UIColor.black.cgColor
-    cv.layer.borderWidth = 2
-    cv.layer.cornerRadius = 20
+    //cv.layer.borderColor = UIColor.black.cgColor
+   // cv.layer.borderWidth = 2
+    //cv.layer.cornerRadius = 20
     cv.delegate = self
     cv.dataSource = self
     return cv 
@@ -92,17 +92,16 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
         self.view.addSubview(mapView)
         view.addSubview(foodCollectionView)
         addSubviews()
-       // requestLocationAndAuthorizeIfNeeded()
-        //locationAuthorization()
-        //locationManager.delegate = self
-        //mapView.showsUserLocation = true
-       //mapView.delegate = self
-        //locationEntry.delegate = self
+        requestLocationAndAuthorizeIfNeeded()
+        locationAuthorization()
+        locationManager.delegate = self
+        mapView.showsUserLocation = true
         setUpConstraints()
         //loadData()
-        //self.navigationController?.navigationBar.topItem?.title = "Search"
-       // self.navigationController?.isNavigationBarHidden = true
-
+        self.navigationController?.navigationBar.topItem?.title = "Search"
+        //self.navigationController?.isNavigationBarHidden = true
+        //mapView.delegate = self
+        // locationEntry.delegate = self
     }
     
 // MARK: - Private Methods
@@ -135,7 +134,7 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
       
       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = foodCollectionView.dequeueReusableCell(withReuseIdentifier: "mapCell", for: indexPath) as? mapCell {
-            cell.backgroundColor = .systemGray
+            cell.backgroundColor = #colorLiteral(red: 0.7363304496, green: 1, blue: 0.7854459882, alpha: 1)
             return cell
         }
         return UICollectionViewCell()
