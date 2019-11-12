@@ -49,6 +49,20 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
         return mv
     }()
     
+    lazy var menuButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "equal.square"), for: .normal)
+        button.clipsToBounds = true
+        button.backgroundColor = .systemPink
+        button.layer.masksToBounds = false
+        button.alpha = 1
+        button.contentMode = .scaleAspectFill
+         button.addTarget(self, action: #selector(listButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
+   
+    
     //ADD A LAZY VAR BAR BUTTON ITEM/ NAVIGATION BUTTON ITEM
     
     lazy var foodCollectionView: UICollectionView = {
@@ -83,7 +97,9 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
             locationManager.requestWhenInUseAuthorization()
         }
     }
-   
+    
+  //MARK: -@objc Functions
+    @objc func listButtonPressed(){}
     
  //MARK: -Life-Cycle Methods
     override func viewDidLoad() {
@@ -147,6 +163,14 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
 // MARK: - Constraint Methods
     
    private func setUpConstraints(){
+    
+    /* private func configureListButtonConstraints(){
+           self.view.addSubview(listButton)
+           
+           listButton.translatesAutoresizingMaskIntoConstraints = false
+           
+           NSLayoutConstraint.activate([listButton.topAnchor.constraint(equalTo: stateSearchBar.bottomAnchor, constant:  10), listButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant:  -10), listButton.heightAnchor.constraint(equalToConstant: 40), listButton.widthAnchor.constraint(equalToConstant: 40)])
+       }*/
         querySearchBar1.translatesAutoresizingMaskIntoConstraints = false
         querySearchBar1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         querySearchBar1.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true

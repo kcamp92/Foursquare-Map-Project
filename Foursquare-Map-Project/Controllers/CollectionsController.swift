@@ -8,23 +8,44 @@
 
 import UIKit
 
+private let cellIdentifier = "collectionCell"
+
 class CollectionsController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+      
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+/*    // MARK: UI Objects
+    lazy var collectionsCV: UICollectionView = {
+        let tv = UICollectionView()
+        tv.backgroundColor = .white
+        tv.register(CollectionsCVCell.self, forCellWithReuseIdentifier: "CollectionsCVCell")
+        return tv
+    }()
+
+    // MARK: - Lifecycle Methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        addSubViews()
+        constrainTableView()
+    }
+    
+    // MARK: - Private Methods
+    private func addSubViews() {
+        view.addSubview(collectionsCV)
+    }
+    
+    // MARK: - Constraint Methods
+    private func constrainTableView() {
+        collectionsCV.translatesAutoresizingMaskIntoConstraints = false
+        
+        [collectionsCV.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor), collectionsCV.leadingAnchor.constraint(equalTo: view.leadingAnchor), collectionsCV.trailingAnchor.constraint(equalTo: view.trailingAnchor), collectionsCV.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)].forEach({$0.isActive = true})
+    }
+    
+
+}*/
