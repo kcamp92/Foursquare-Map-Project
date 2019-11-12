@@ -29,6 +29,7 @@
 		0B88AB3523737F7B002D44BF /* mapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AB3423737F7B002D44BF /* mapCell.swift */; };
 		0B8AD7402374CBF100578E2E /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8AD73F2374CBF100578E2E /* PersistenceHelper.swift */; };
 		0B8AD7422374CC3A00578E2E /* CollectionsPersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8AD7412374CC3A00578E2E /* CollectionsPersistenceHelper.swift */; };
+		0BA9D77C237AFA6D003F4EC1 /* collectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA9D77B237AFA6C003F4EC1 /* collectionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		0B88AB3423737F7B002D44BF /* mapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapCell.swift; sourceTree = "<group>"; };
 		0B8AD73F2374CBF100578E2E /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
 		0B8AD7412374CC3A00578E2E /* CollectionsPersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsPersistenceHelper.swift; sourceTree = "<group>"; };
+		0BA9D77B237AFA6C003F4EC1 /* collectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = collectionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				0B88AB3423737F7B002D44BF /* mapCell.swift */,
+				0BA9D77B237AFA6C003F4EC1 /* collectionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				0B88AAED2370C832002D44BF /* SearchController.swift in Sources */,
 				0B88AAFF2370C9EC002D44BF /* VenuePhotosAPIClient.swift in Sources */,
 				0B88AAF72370C97C002D44BF /* ZipCodeHelper.swift in Sources */,
+				0BA9D77C237AFA6D003F4EC1 /* collectionCell.swift in Sources */,
 				0B88AAE62370C13C002D44BF /* Secrets.swift in Sources */,
 				0B88AAFD2370C9DA002D44BF /* VenueSearchAPIClient.swift in Sources */,
 				0B88AAEF2370C8A8002D44BF /* CollectionsController.swift in Sources */,
