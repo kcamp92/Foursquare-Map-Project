@@ -13,17 +13,17 @@ import MapKit
 private let cellIdentifier = "mapCell"
 
 class SearchController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-  
-//    MARK: -Properties
-
+    
+    //    MARK: -Properties
+    
     private let locationManager = CLLocationManager()
-   // let mapView = MKMapView(frame: UIScreen.main.bounds)
+    // let mapView = MKMapView(frame: UIScreen.main.bounds)
     let initialLocation = CLLocation(latitude: 40.742054, longitude: -73.769417)
     let searchRadius: CLLocationDistance = 2000
-       
+    
     
     lazy var querySearchBar1: UISearchBar = {
-    let sb =  UISearchBar()
+        let sb =  UISearchBar()
         sb.placeholder = "Search Venue"
         sb.searchBarStyle = UISearchBar.Style.prominent
         sb.backgroundColor = .systemTeal
@@ -32,9 +32,9 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
         sb.delegate = self
         return sb
     }()
-  
+    
     lazy var locationSearchBar2: UISearchBar = {
-    let sb =  UISearchBar()
+        let sb =  UISearchBar()
         sb.placeholder = "Enter Location"
         sb.searchBarStyle = UISearchBar.Style.prominent
         sb.backgroundColor = .systemOrange
@@ -48,37 +48,37 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
         let mv = MKMapView()
         return mv
     }()
-
+    
     
     lazy var foodCollectionView: UICollectionView = {
-    var layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
-    let cv = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout)
-    //let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    layout.itemSize = CGSize(width: 175, height: 175)
-    layout.scrollDirection = .horizontal
-    cv.backgroundColor = .clear
-    cv.register(mapCell.self, forCellWithReuseIdentifier: cellIdentifier)
-    //cv.layer.borderColor = UIColor.black.cgColor
-   // cv.layer.borderWidth = 2
-    //cv.layer.cornerRadius = 20
-    cv.delegate = self
-    cv.dataSource = self
-    return cv 
+        var layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
+        let cv = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout)
+        //let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        layout.itemSize = CGSize(width: 175, height: 175)
+        layout.scrollDirection = .horizontal
+        cv.backgroundColor = .clear
+        cv.register(mapCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        //cv.layer.borderColor = UIColor.black.cgColor
+        // cv.layer.borderWidth = 2
+        //cv.layer.cornerRadius = 20
+        cv.delegate = self
+        cv.dataSource = self
+        return cv
     }()
     
     var venueData = [Venue](){
-           didSet{
+        didSet{
             replacesMapAnnotationswithSearch()
             foodCollectionView.reloadData()
-           }
-       }
+        }
+    }
     
     var venuePics = [UIImage](){
         didSet{
             foodCollectionView.reloadData()
         }
     }
-       
+    
     
     private func requestLocationAndAuthorizeIfNeeded() {
         switch CLLocationManager.authorizationStatus() {
@@ -89,25 +89,24 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
         }
     }
     
-  //MARK: -@objc Functions
+    //MARK: -@objc Functions
     @objc func listButtonPressed(){}
     
     
- //MARK: -Life-Cycle Methods
+    //MARK: -Life-Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = #colorLiteral(red: 0.8939689994, green: 1, blue: 0.8997142911, alpha: 1)
         self.view.addSubview(mapView)
         view.addSubview(foodCollectionView)
         addSubviews()
-       // mapView.delegate = self
+        // mapView.delegate = self
         locationManager.delegate = self
         requestLocationAndAuthorizeIfNeeded()
         locationAuthorization()
         locationManager.delegate = self
         mapView.showsUserLocation = true
         setUpConstraints()
-        //loadData()
         self.navigationController?.navigationBar.topItem?.title = "Search"
         //self.navigationController?.isNavigationBarHidden = true
         mapView.userTrackingMode = .follow
@@ -115,15 +114,15 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     
-          
-// MARK: - Private Methods
+    
+    // MARK: - Private Methods
     
     private func addSubviews() {
         view.addSubview(querySearchBar1)
         view.addSubview(locationSearchBar2)
         view.addSubview(mapView)
         view.addSubview(foodCollectionView)
-       // self.view.addSubview(menuButton)
+        // self.view.addSubview(menuButton)
     }
     
     
@@ -138,39 +137,49 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
         }
         
     }
-   
-// MARK: - CollectionView Methods
+    
+    private func loadData(query: String, lat:Double, long: Double){
+        VenueSearchAPIClient.shared.getVenues(lat:lat, long: long, query: query)
+        {(result) in
+            switch result {
+            case .success(let venue):
+                DispatchQueue.main.async {
+                    self.venueData = venue
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+    }
+    
+    // MARK: - CollectionView Methods
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-          return 15
-      }
-      
-      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return 12
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = foodCollectionView.dequeueReusableCell(withReuseIdentifier: "mapCell", for: indexPath) as? mapCell {
             cell.backgroundColor = #colorLiteral(red: 0.7363304496, green: 1, blue: 0.7854459882, alpha: 1)
             return cell
         }
         return UICollectionViewCell()
-      }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
     }
     
+    /*  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+     <#code#>
+     }
+     */
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-          return CGSize(width: 100, height: 100)
-      }
+        return CGSize(width: 100, height: 100)
+    }
     
-// MARK: - Constraint Methods
+    // MARK: - Constraint Methods
     
-   private func setUpConstraints(){
-    
-//        menuButton.translatesAutoresizingMaskIntoConstraints = false
-//        menuButton.topAnchor.constraint(equalTo: querySearchBar1.bottomAnchor, constant: 10).isActive = true
-//        menuButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10).isActive = true
-//        menuButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-//        menuButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-//
+    private func setUpConstraints(){
+        
         querySearchBar1.translatesAutoresizingMaskIntoConstraints = false
         querySearchBar1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         querySearchBar1.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
@@ -196,9 +205,9 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
         foodCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         foodCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.125).isActive = true
         foodCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -35).isActive = true
-    
+        
     }
-   
+    
     
 }
 // MARK: - Extensions
@@ -206,10 +215,10 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
 extension SearchController: CLLocationManagerDelegate, MKMapViewDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(locations)
+        print("new locations \(locations)")
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
+        print("an error occurred: \(error)")
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -222,80 +231,62 @@ extension SearchController: CLLocationManagerDelegate, MKMapViewDelegate {
     }
     
     private func locationAuthorization() {
-           let status = CLLocationManager.authorizationStatus()
-           switch status {
-           case .authorizedAlways, .authorizedWhenInUse:
-               mapView.showsUserLocation = true
-               locationManager.requestLocation()
-               locationManager.startUpdatingLocation()
-               locationManager.desiredAccuracy = kCLLocationAccuracyBest
-           default:
-               locationManager.requestWhenInUseAuthorization()
-               
-           }
-       }
-       
-}
-
-extension SearchController: UISearchBarDelegate{
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        <#code#>
+        let status = CLLocationManager.authorizationStatus()
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            mapView.showsUserLocation = true
+            locationManager.requestLocation()
+            locationManager.startUpdatingLocation()
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        default:
+            locationManager.requestWhenInUseAuthorization()
+            
+        }
     }
     
 }
+//MARK: - Search Bar Extensions
 
-/* func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-       searchString = searchText
-   }
-   
-   func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-       locationEntry.showsCancelButton = true
-       return true
-   }
-   
-   func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-       locationEntry.showsCancelButton = false
-       locationEntry.resignFirstResponder()
-   }
-   
-   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //create activity indicator
-       let activityIndicator = UIActivityIndicatorView()
-       activityIndicator.center = self.view.center
-       activityIndicator.startAnimating()
-       self.view.addSubview(activityIndicator)
-       
-       searchBar.resignFirstResponder()
-       
-       //search request
-       let searchRequest = MKLocalSearch.Request()
-       searchRequest.naturalLanguageQuery = searchBar.text
-       let activeSearch = MKLocalSearch(request: searchRequest)
-       activeSearch.start { (response, error) in
-           activityIndicator.stopAnimating()
-           
-           if response == nil {
-               print(error)
-           } else {
-               //remove annotations
-               let annotations = self.mapView.annotations
-               self.mapView.removeAnnotations(annotations)
-               
-               //get data
-               let latitud = response?.boundingRegion.center.latitude
-               let longitud = response?.boundingRegion.center.longitude
-               
-               let newAnnotation = MKPointAnnotation()
-               newAnnotation.title = searchBar.text
-               newAnnotation.coordinate = CLLocationCoordinate2D(latitude: latitud!, longitude: longitud!)
-               self.mapView.addAnnotation(newAnnotation)
-               
-               //to zoom in the annotation
-               let coordinateRegion = MKCoordinateRegion.init(center: newAnnotation.coordinate, latitudinalMeters: self.searchRadius * 2.0, longitudinalMeters: self.searchRadius * 2.0)
-               self.mapView.setRegion(coordinateRegion, animated: true)
-           }
-       }
-
-   }
-   */
+extension SearchController: UISearchBarDelegate {
+    
+    //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    //        searchString = searchText
+    //    }
+    //
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBar.showsCancelButton = true
+        return true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let searchRequest = MKLocalSearch.Request()
+        searchRequest.naturalLanguageQuery = searchBar.text
+        let activeSearch = MKLocalSearch(request: searchRequest)
+        activeSearch.start {(response, error) in
+            if response == nil {
+                print(error)
+            } else {
+                let annotations = self.mapView.annotations
+                self.mapView.removeAnnotations(annotations)
+                
+                let lattitude = response?.boundingRegion.center.latitude
+                let longitude = response?.boundingRegion.center.longitude
+                
+                let newAnnotation = MKPointAnnotation()
+                newAnnotation.title = searchBar.text
+                newAnnotation.coordinate = CLLocationCoordinate2D(latitude: lattitude!, longitude: longitude!)
+                self.mapView.addAnnotation(newAnnotation)
+                
+                let coordinateRegion = MKCoordinateRegion.init(center: newAnnotation.coordinate, latitudinalMeters: self.searchRadius * 2.0, longitudinalMeters: self.searchRadius * 2.0)
+                self.mapView.setRegion(coordinateRegion, animated: true)
+                
+                self.loadData(query: searchBar.text!, lat: newAnnotation.coordinate.latitude, long: newAnnotation.coordinate.longitude)
+            }
+        }
+    }
+    
+}

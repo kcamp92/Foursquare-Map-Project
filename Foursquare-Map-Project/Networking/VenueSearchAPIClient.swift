@@ -13,9 +13,9 @@ class VenueSearchAPIClient {
     private init() {}
     static let shared = VenueSearchAPIClient()
 
-    func getVenues(latLong: String, query: String, completionHandler: @escaping (Result<[Venue], AppError>)-> Void){
+    func getVenues(lat: Double, long: Double, query: String, completionHandler: @escaping (Result<[Venue], AppError>)-> Void){
 
-        let URLString = "https://api.foursquare.com/v2/venues/search?client_id=\(Secrets.id)&client_secret=\(Secrets.key)&ll=\(latLong)&query=\(query)&v=20191104"
+        let URLString = "https://api.foursquare.com/v2/venues/search?client_id=\(Secrets.id)&client_secret=\(Secrets.key)&ll=\(lat),\(long)&query=\(query)&v=20191104"
         guard let url = URL(string: URLString) else {
             
             completionHandler(.failure(AppError.badURL))
