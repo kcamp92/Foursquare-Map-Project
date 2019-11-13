@@ -93,9 +93,9 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
     
     //MARK: -@objc Functions
     @objc func listButtonPressed(){
-        //pushing data from venue collection to ListController
+        let listVC = ListController()
+        navigationController?.pushViewController(listVC, animated: true)
     }
-    
     
     //MARK: -Life-Cycle Methods
     override func viewDidLoad() {
@@ -306,9 +306,6 @@ extension SearchController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        guard querySearchBar1.text != "" && locationSearchBar2.text != "" else {
-//            return
-//        }
         let searchRequest = MKLocalSearch.Request()
         searchRequest.naturalLanguageQuery = searchBar.text
         let activeSearch = MKLocalSearch(request: searchRequest)
