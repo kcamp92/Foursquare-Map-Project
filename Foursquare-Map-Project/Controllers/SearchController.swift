@@ -30,6 +30,7 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
         sb.isTranslucent = false
         sb.sizeToFit()
         sb.delegate = self
+        sb.tag = 0
         return sb
     }()
     
@@ -41,6 +42,7 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
         sb.isTranslucent = false
         sb.sizeToFit()
         sb.delegate = self
+        sb.tag = 1
         return sb
     }()
     
@@ -53,14 +55,10 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
     lazy var foodCollectionView: UICollectionView = {
         var layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
         let cv = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout)
-        //let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.itemSize = CGSize(width: 175, height: 175)
         layout.scrollDirection = .horizontal
         cv.backgroundColor = .clear
         cv.register(mapCell.self, forCellWithReuseIdentifier: cellIdentifier)
-        //cv.layer.borderColor = UIColor.black.cgColor
-        // cv.layer.borderWidth = 2
-        //cv.layer.cornerRadius = 20
         cv.delegate = self
         cv.dataSource = self
         return cv
@@ -75,6 +73,9 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
     
     var venuePics = [UIImage](){
         didSet{
+            guard self.venuePics.count == self.venueData.count else {
+                return
+            }
             foodCollectionView.reloadData()
         }
     }
@@ -90,7 +91,9 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     //MARK: -@objc Functions
-    @objc func listButtonPressed(){}
+    @objc func listButtonPressed(){
+        //pushing data from venue collection to ListController
+    }
     
     
     //MARK: -Life-Cycle Methods
@@ -108,7 +111,6 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
         mapView.showsUserLocation = true
         setUpConstraints()
         self.navigationController?.navigationBar.topItem?.title = "Search"
-        //self.navigationController?.isNavigationBarHidden = true
         mapView.userTrackingMode = .follow
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "equal.square"), style: .plain, target: self, action: #selector(listButtonPressed))
     }
@@ -122,7 +124,6 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
         view.addSubview(locationSearchBar2)
         view.addSubview(mapView)
         view.addSubview(foodCollectionView)
-        // self.view.addSubview(menuButton)
     }
     
     
@@ -143,14 +144,13 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
         {(result) in
             switch result {
             case .success(let venue):
-                DispatchQueue.main.async {
+//                DispatchQueue.main.async {
                     self.venueData = venue
-                }
+                //}
             case .failure(let error):
                 print(error)
             }
         }
-        
     }
     
     // MARK: - CollectionView Methods
@@ -205,9 +205,7 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
         foodCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         foodCollectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.125).isActive = true
         foodCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -35).isActive = true
-        
     }
-    
     
 }
 // MARK: - Extensions
@@ -248,21 +246,34 @@ extension SearchController: CLLocationManagerDelegate, MKMapViewDelegate {
 //MARK: - Search Bar Extensions
 
 extension SearchController: UISearchBarDelegate {
-    
-    //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    //        searchString = searchText
-    //    }
-    //
+   
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.showsCancelButton = true
+        switch searchBar.tag {
+        case 0:
+            querySearchBar1.showsCancelButton = true
+        case 1:
+            locationSearchBar2.showsCancelButton = true
+        default:
+            break
+        }
         return true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
+        switch searchBar.tag {
+        case 0:
+            querySearchBar1.showsCancelButton = false
+        case 1:
+            locationSearchBar2.showsCancelButton = false
+        default:
+            break
+        }
         searchBar.resignFirstResponder()
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        guard querySearchBar1.text != "" && locationSearchBar2.text != "" else {
+//            return
+//        }
         let searchRequest = MKLocalSearch.Request()
         searchRequest.naturalLanguageQuery = searchBar.text
         let activeSearch = MKLocalSearch(request: searchRequest)
@@ -284,7 +295,7 @@ extension SearchController: UISearchBarDelegate {
                 let coordinateRegion = MKCoordinateRegion.init(center: newAnnotation.coordinate, latitudinalMeters: self.searchRadius * 2.0, longitudinalMeters: self.searchRadius * 2.0)
                 self.mapView.setRegion(coordinateRegion, animated: true)
                 
-                self.loadData(query: searchBar.text!, lat: newAnnotation.coordinate.latitude, long: newAnnotation.coordinate.longitude)
+                self.loadData(query: self.querySearchBar1.text!, lat: newAnnotation.coordinate.latitude, long: newAnnotation.coordinate.longitude)
             }
         }
     }
