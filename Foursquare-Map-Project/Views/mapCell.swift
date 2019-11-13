@@ -14,10 +14,11 @@ class mapCell: UICollectionViewCell {
     
     lazy var foodImage: UIImageView = {
         let iv = UIImageView()
+        iv.clipsToBounds = true
+        iv.contentMode = .scaleToFill
         iv.backgroundColor = .systemIndigo
         return iv
     }()
-    
     
     // MARK: - Initializers
       override init(frame: CGRect) {

@@ -17,8 +17,6 @@ class VenuePhotoAPIClient {
 
         let URLString = "https://api.foursquare.com/v2/venues/\(venueId)/photos?client_id=\(Secrets.id)&client_secret=\(Secrets.key)&v=20191104&limit=1"
         
-
-        
         guard let url = URL(string: URLString) else {
             
             completionHandler(.failure(AppError.badURL))
