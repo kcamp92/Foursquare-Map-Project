@@ -67,7 +67,8 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
     var venueData = [Venue](){
         didSet{
             replacesMapAnnotationswithSearch()
-            foodCollectionView.reloadData()
+            loadImageData(venues: self.venueData)
+          //  foodCollectionView.reloadData()
         }
     }
     
@@ -153,15 +154,49 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
         }
     }
     
+    private func loadImageData(venues:[Venue]){
+        for venue in venues {
+            guard let id = venue.id else {
+                return
+            }
+            VenuePhotoAPIClient.shared.getVenues(venueId: id) {(results) in
+                switch results {
+                case .failure(let error):
+                    print(error)
+                    self.venuePics.append(UIImage(named: "placeholder")!)
+                case .success(let data):
+                    guard let image = data.first?.getImageURL() else {return}
+                    if image.count > 0 {
+                        ImageHelper.shared.getImage(urlStr: image) { (results) in
+                            DispatchQueue.main.async {
+                                switch results {
+                                case .failure(let error):
+                                    print(error)
+                                    self.venuePics.append(UIImage(named: "placeholder")!)
+                                case .success(let foodImages):
+                                    self.venuePics.append(foodImages)
+                                }
+                            }
+                        }
+                    } else {
+                          self.venuePics.append(UIImage(named: "placeholder")!)
+                    }
+                }
+            }
+        }
+    }
+   
     // MARK: - CollectionView Methods
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return venueData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = foodCollectionView.dequeueReusableCell(withReuseIdentifier: "mapCell", for: indexPath) as? mapCell {
             cell.backgroundColor = #colorLiteral(red: 0.7363304496, green: 1, blue: 0.7854459882, alpha: 1)
+            cell.foodImage.image = venuePics[indexPath.item]
+            
             return cell
         }
         return UICollectionViewCell()
