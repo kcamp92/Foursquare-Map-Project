@@ -7,51 +7,89 @@
 //
 
 import Foundation
-/*
 
-{
-    "meta": {
-        "code": 200,
-        "requestId": "5dcb2dc03907e70029e01a5f"
-    },
-    "response": {
-        "photos": {
-            "count": 1,
-            "items": [
-                {
-                    "id": "5d700070ca17630008fa0bdd",
-                    "createdAt": 1567621232,
-                    "source": {
-                        "name": "Swarm for iOS",
-                        "url": "https://www.swarmapp.com"
-                    },
-                    "prefix": "https://fastly.4sqi.net/img/general/",
-                    "suffix": "/2488950_kGzVOZndNiAQwWUanmusJfR4jNapmcDwtmf2ufKp8lk.jpg",
-                    "width": 1440,
-                    "height": 1920,
-                    "user": {
-                        "id": "2488950",
-                        "firstName": "jeffrey",
-                        "lastName": "arnold",
-                        "gender": "male",
-                        "photo": {
-                            "prefix": "https://fastly.4sqi.net/img/user/",
-                            "suffix": "/2488950-UUUCBRDRMBU11NRO.jpg"
-                        }
-                    },
-                    "checkin": {
-                        "id": "5d6ffe4924cbff0008a00f2f",
-                        "createdAt": 1567620681,
-                        "type": "checkin",
-                        "timeZoneOffset": -240
-                    },
-                    "visibility": "public"
-                }
-            ],
-            "dupesRemoved": 0
-        }
+// MARK: - Welcome
+
+struct VenueImages: Codable {
+    let meta: MetaImages
+    let response: ResponseImages
+}
+
+// MARK: - Meta
+struct MetaImages: Codable {
+    let code: Int
+    let requestID: String
+
+    enum CodingKeys: String, CodingKey {
+        case code
+        case requestID = "requestId"
     }
 }
+
+// MARK: - Response
+struct ResponseImages: Codable {
+    let photos: Photos
+}
+
+// MARK: - Photos
+struct Photos: Codable {
+    let count: Int
+    let items: [Item]
+    let dupesRemoved: Int
+}
+
+// MARK: - Item
+struct Item: Codable {
+    let id: String
+    let createdAt: Int
+    let source: Source
+    let itemPrefix: String
+    let suffix: String
+    let width, height: Int
+    let user: User
+    let checkin: Checkin
+    let visibility: String
+
+    enum CodingKeys: String, CodingKey {
+        case id, createdAt, source
+        case itemPrefix = "prefix"
+        case suffix, width, height, user, checkin, visibility
+    }
+}
+
+// MARK: - Checkin
+struct Checkin: Codable {
+    let id: String
+    let createdAt: Int
+    let type: String
+    let timeZoneOffset: Int
+}
+
+// MARK: - Source
+struct Source: Codable {
+    let name: String
+    let url: String
+}
+
+// MARK: - User
+struct User: Codable {
+    let id, firstName, lastName, gender: String
+    let photo: Photo
+}
+
+// MARK: - Photo
+struct Photo: Codable {
+    let photoPrefix: String
+    let suffix: String
+
+    enum CodingKeys: String, CodingKey {
+        case photoPrefix = "prefix"
+        case suffix
+    }
+}
+
+/*
+
 //let url = "https://api.foursquare.com/v2/venues/\(venueID)/photos?client_id=\(Secrets.client_id)&client_secret=\(Secrets.client_secret)&v=20191104&limit=1"
 
 
