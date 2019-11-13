@@ -55,6 +55,12 @@ struct Item: Codable {
         case itemPrefix = "prefix"
         case suffix, width, height, user, checkin, visibility
     }
+    
+    func getImageURL() -> String{
+        return
+    itemPrefix + "Original" + suffix
+        
+    }
 }
 
 // MARK: - Checkin

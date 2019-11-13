@@ -13,7 +13,7 @@ class VenuePhotoAPIClient {
     private init() {}
     static let shared = VenuePhotoAPIClient()
 
-    func getVenues(latLong: String, venueId: String, completionHandler: @escaping (Result<[Venue], AppError>)-> Void){
+    func getVenues(venueId: String, completionHandler: @escaping (Result<[Item], AppError>)-> Void){
 
         let URLString = "https://api.foursquare.com/v2/venues/\(venueId)/photos?client_id=\(Secrets.id)&client_secret=\(Secrets.key)&v=20191104&limit=1"
         
@@ -30,10 +30,9 @@ class VenuePhotoAPIClient {
                 completionHandler(.failure(error))
             case .success(let data):
                 do {
-                    let venuesDecoded = try JSONDecoder().decode(Venues.self, from: data)
-                    if let venue = venuesDecoded.response?.venues {
+                    let venuesDecoded = try JSONDecoder().decode(VenueImages.self, from: data)
+                    let venue = venuesDecoded.response.photos.items
                     completionHandler(.success(venue))
-                    }
                 }catch{
                     completionHandler(.failure(AppError.couldNotParseJSON(rawError: error)))
                 }
