@@ -52,6 +52,7 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
     }()
     
     
+    
     lazy var foodCollectionView: UICollectionView = {
         var layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout.init()
         let cv = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout)
@@ -63,6 +64,8 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
         cv.dataSource = self
         return cv
     }()
+    
+ //MARK:- Data Passing Variables
     
     var venueData = [Venue](){
         didSet{
@@ -92,30 +95,31 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     //MARK: -@objc Functions
+    
     @objc func listButtonPressed(){
         let listVC = ListController()
+        listVC.venueData = self.venueData
+        listVC.venuePics = self.venuePics
         navigationController?.pushViewController(listVC, animated: true)
     }
     
     //MARK: -Life-Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = #colorLiteral(red: 0.8939689994, green: 1, blue: 0.8997142911, alpha: 1)
-        self.view.addSubview(mapView)
-        view.addSubview(foodCollectionView)
-        addSubviews()
-        // mapView.delegate = self
+        mapView.delegate = self
         locationManager.delegate = self
+       // self.view.backgroundColor = #colorLiteral(red: 0.8939689994, green: 1, blue: 0.8997142911, alpha: 1)
+        self.view.addSubview(mapView)
+        addSubviews()
+        setUpConstraints()
         requestLocationAndAuthorizeIfNeeded()
         locationAuthorization()
-        locationManager.delegate = self
         mapView.showsUserLocation = true
-        setUpConstraints()
-        self.navigationController?.navigationBar.topItem?.title = "Search"
         mapView.userTrackingMode = .follow
+        self.navigationController?.navigationBar.topItem?.title = "Search"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "equal.square"), style: .plain, target: self, action: #selector(listButtonPressed))
+        
     }
-    
     
     
     // MARK: - Private Methods
@@ -202,10 +206,10 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
         return UICollectionViewCell()
     }
     
-    /*  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-     <#code#>
-     }
-     */
+//     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//     <#code#>
+//     }
+     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 100)
@@ -246,7 +250,7 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
 // MARK: - Extensions
 
 extension SearchController: CLLocationManagerDelegate, MKMapViewDelegate {
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("new locations \(locations)")
     }
@@ -258,6 +262,8 @@ extension SearchController: CLLocationManagerDelegate, MKMapViewDelegate {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
             locationManager.requestLocation()
+            let coordinateRegion = MKCoordinateRegion(center: locationManager.location!.coordinate, latitudinalMeters: self.searchRadius * 2.0, longitudinalMeters: self.searchRadius * 2.0)
+           self.mapView.setRegion(coordinateRegion, animated: true)
         default:
             break
         }
@@ -271,6 +277,9 @@ extension SearchController: CLLocationManagerDelegate, MKMapViewDelegate {
             locationManager.requestLocation()
             locationManager.startUpdatingLocation()
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
+//            let coordinateRegion = MKCoordinateRegion(center: locationManager.location!.coordinate, latitudinalMeters: self.searchRadius * 2.0, longitudinalMeters: self.searchRadius * 2.0)
+//            self.mapView.setRegion(coordinateRegion, animated: true)
+//            print(coordinateRegion.center)
         default:
             locationManager.requestWhenInUseAuthorization()
             
