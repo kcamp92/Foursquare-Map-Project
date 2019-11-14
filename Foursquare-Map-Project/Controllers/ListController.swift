@@ -8,23 +8,86 @@
 
 import UIKit
 
-class ListController: UIViewController {
+private let cellIdentifier = "listCell"
 
+class ListController: UIViewController {
+    
+    //MARK:- Lazy Variables
+    
+    lazy var listTableView: UITableView = {
+    let tv: UITableView = UITableView()
+        tv.backgroundColor = .clear
+    tv.register(listCell.self, forCellReuseIdentifier: cellIdentifier)
+    tv.delegate = self
+    tv.dataSource = self
+    return tv
+    }()
+        
+    
+ //MARK:- Data Passing Variables
+    
+     var venueData = [Venue](){
+         didSet{
+             
+           listTableView.reloadData()
+         }
+     }
+     
+     var venuePics = [UIImage](){
+         didSet{
+            
+             listTableView.reloadData()
+         }
+     }
+     
+ //MARK:- Lifecycycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationController?.navigationItem.title = "List Results"
+        setupConstraints()
+        Colors.shared.setGradientBackground(colorTop: .gray, colorBottom: .white, newView: view)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+//MARK:- Private Methods
+    
+    private func setupConstraints(){
+    self.view.addSubview(listTableView)
+    listTableView.translatesAutoresizingMaskIntoConstraints = false
+    listTableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+    listTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+    listTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+    listTableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        }
     }
-    */
 
+ //MARK:- Tableview Methods Extension
+
+extension ListController :UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return venueData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let venueInfo = venueData[indexPath.row]
+        let venuePicInfo = venuePics[indexPath.row]
+        let cell = listTableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! listCell
+        cell.backgroundColor = .clear
+        cell.foodCatImage.image = venuePicInfo
+        cell.venueLabel.text = venueInfo.name
+        cell.catLabel.text = venueInfo.location?.address
+            return cell
+        
+        //return UITableViewCell()
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //add code for detail view controller
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+    
 }
+
