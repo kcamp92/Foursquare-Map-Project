@@ -7,3 +7,11 @@
 //
 
 import Foundation
+// MARK: - Venue
+
+struct dvcVenue: Codable {
+    var id, name: String
+    var address: String
+    var image2: Data?
+
+}

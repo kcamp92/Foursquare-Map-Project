@@ -17,13 +17,9 @@ struct VenueImages: Codable {
 
 // MARK: - Meta
 struct MetaImages: Codable {
-    let code: Int
-    let requestID: String
+    let code: Int?
+    let requestId: String?
 
-    enum CodingKeys: String, CodingKey {
-        case code
-        case requestID = "requestId"
-    }
 }
 
 // MARK: - Response
@@ -33,66 +29,37 @@ struct ResponseImages: Codable {
 
 // MARK: - Photos
 struct Photos: Codable {
-    let count: Int
+    let count: Int?
     let items: [Item]
-    let dupesRemoved: Int
+    let dupesRemoved: Int?
 }
 
 // MARK: - Item
 struct Item: Codable {
     let id: String
-    let createdAt: Int
-    let source: Source
-    let itemPrefix: String
+    let createdAt: Int?
+    let prefix: String
     let suffix: String
-    let width, height: Int
-    let user: User
-    let checkin: Checkin
-    let visibility: String
+    let width, height: Int?
+   
 
-    enum CodingKeys: String, CodingKey {
-        case id, createdAt, source
-        case itemPrefix = "prefix"
-        case suffix, width, height, user, checkin, visibility
-    }
-    
     func getImageURL() -> String{
         return
-    itemPrefix + "Original" + suffix
+    prefix + "Original" + suffix
         
     }
 }
 
-// MARK: - Checkin
-struct Checkin: Codable {
-    let id: String
-    let createdAt: Int
-    let type: String
-    let timeZoneOffset: Int
-}
-
-// MARK: - Source
-struct Source: Codable {
-    let name: String
-    let url: String
-}
-
-// MARK: - User
-struct User: Codable {
-    let id, firstName, lastName, gender: String
-    let photo: Photo
-}
-
-// MARK: - Photo
-struct Photo: Codable {
-    let photoPrefix: String
-    let suffix: String
-
-    enum CodingKeys: String, CodingKey {
-        case photoPrefix = "prefix"
-        case suffix
-    }
-}
+//// MARK: - Photo
+//struct Photo: Codable {
+//    let photoPrefix: String
+//    let suffix: String
+//
+//    enum CodingKeys: String, CodingKey {
+//        case photoPrefix = "prefix"
+//        case suffix
+//    }
+//}
 
 /*
 

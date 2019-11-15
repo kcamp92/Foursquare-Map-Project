@@ -106,12 +106,13 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
     //MARK: -Life-Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        addSubviews()
+        setUpConstraints()
         mapView.delegate = self
         locationManager.delegate = self
        // self.view.backgroundColor = #colorLiteral(red: 0.8939689994, green: 1, blue: 0.8997142911, alpha: 1)
-        self.view.addSubview(mapView)
-        addSubviews()
-        setUpConstraints()
+      //  self.view.addSubview(mapView)
+       
         requestLocationAndAuthorizeIfNeeded()
         locationAuthorization()
         mapView.showsUserLocation = true
@@ -140,6 +141,7 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
             newMapAnnotation.coordinate = CLLocationCoordinate2D(latitude: i.location?.lat ?? 40.742054, longitude: i.location?.lng ?? -73.769417)
             newMapAnnotation.title = i.name
             mapView.addAnnotation(newMapAnnotation)
+            newMapAnnotation.subtitle = i.id
         }
         
     }
@@ -151,6 +153,7 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
             case .success(let venue):
 //                DispatchQueue.main.async {
                     self.venueData = venue
+                    print(venue.count)
                 //}
             case .failure(let error):
                 print(error)
@@ -286,7 +289,21 @@ extension SearchController: CLLocationManagerDelegate, MKMapViewDelegate {
         }
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let venueIndex = venueData.firstIndex(where: {$0.id == view.annotation?.subtitle}) else {return}
+        let dvc = DetailViewController()
+        let venueData1 = venueData[venueIndex]
+        
+        let venue = dvcVenue(id: venueData1.id ?? "", name: venueData1.name ?? "", address: venueData1.location?.address ?? "", image2: nil)
+        dvc.detailInfo = venue
+//        dvc.detailInfo.image2 = (venuePics[venueIndex].pngData() ?? (UIImage(named:"placeholder")?.pngData() ?? Data()))
+        dvc.detailInfo.name = venueData[venueIndex].name!
+        dvc.detailInfo.address = (venueData[venueIndex].location?.address)!
+         navigationController?.pushViewController(dvc, animated: true)
+    }
+    
 }
+
 //MARK: - Search Bar Extensions
 
 extension SearchController: UISearchBarDelegate {

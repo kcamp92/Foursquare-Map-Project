@@ -7,3 +7,10 @@
 //
 
 import Foundation
+
+struct Bookmark: Codable {
+    
+    var image: Data?
+    var categoryName: String
+    var venues: [Venue]?
+}
