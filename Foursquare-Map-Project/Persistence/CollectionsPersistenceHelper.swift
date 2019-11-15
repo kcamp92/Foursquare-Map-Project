@@ -8,25 +8,26 @@
 
 import Foundation
 
-/*struct CardPersistenceManager{
+struct VenuePersistenceManager{
     private init (){}
-    static let manager = CardPersistenceManager()
-    private let persistenceHelper = PersistenceHelper<Card>(fileName: "flashCard.plist")
+    static let manager = VenuePersistenceManager()
+    private let persistenceHelper = PersistenceHelper<Bookmark>(fileName: "venueBookmark.plist")
     
-    func saveCard(flashCard: Card) throws {
-        try persistenceHelper.save(newElement: flashCard)
+    func saveVenueArr(venue: [Bookmark]) throws {
+        try persistenceHelper.save(newElements: venue)
     }
-    func getCard() throws -> [Card]{
+    
+    func getBookmarks() throws -> [Bookmark]{
         return try persistenceHelper.getObjects()
     }
     
-    func deleteCard(cardTitle: String) {
-        do {
-        let deleteCard = try getCard().filter({$0.cardTitle != cardTitle})
-        try  persistenceHelper.replace(elements: deleteCard)
-        }catch{
-         print(error)
-        }
-    }
+//    func deleteCard(cardTitle: String) {
+//        do {
+//        let deleteCard = try getCard().filter({$0.cardTitle != cardTitle})
+//        try  persistenceHelper.replace(elements: deleteCard)
+//        }catch{
+//         print(error)
+//        }
+//    }
 }
-*/
+
