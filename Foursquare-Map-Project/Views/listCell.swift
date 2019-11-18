@@ -21,26 +21,26 @@ class listCell: UITableViewCell {
     lazy var venueLabel:UILabel = {
     let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont(name: "Marker Felt", size: 18.0)
-        label.textColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+        label.font = UIFont(name: "Marker Felt", size: 20.0)
+        label.textColor = .black
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         label.layer.cornerRadius = 20
       //  label.isHidden = true
-        label.backgroundColor = .systemPink
+        label.backgroundColor = .clear
     return label
     }()
     
     lazy var catLabel:UILabel = {
     let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont(name: "Marker Felt", size: 18.0)
-        label.textColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+        label.font = UIFont(name: "Marker Felt", size: 20.0)
+        label.textColor = .black
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         label.layer.cornerRadius = 20
         //label.isHidden = true
-        label.backgroundColor = .systemPink
+        label.backgroundColor = .clear
     return label
     }()
     
@@ -81,7 +81,7 @@ class listCell: UITableViewCell {
         foodCatImage.widthAnchor.constraint(equalTo: self.foodCatImage.heightAnchor).isActive = true
         
         venueLabel.translatesAutoresizingMaskIntoConstraints = false
-        venueLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
+        venueLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
         venueLabel.leadingAnchor.constraint(equalTo: self.foodCatImage.trailingAnchor, constant: 10).isActive = true
         venueLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         venueLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true

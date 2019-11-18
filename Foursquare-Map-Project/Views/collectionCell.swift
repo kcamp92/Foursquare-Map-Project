@@ -22,3 +22,23 @@ class collectionCell: UICollectionViewCell {
         return label
     }()
 }
+/*  lazy var foodCatImage: UIImageView = {
+  let iv = UIImageView()
+  iv.clipsToBounds = true
+  iv.contentMode = .scaleToFill
+  iv.backgroundColor = .systemIndigo
+   return iv
+  }()
+  
+  lazy var venueLabel:UILabel = {
+  let label = UILabel()
+      label.textAlignment = .center
+      label.font = UIFont(name: "Marker Felt", size: 20.0)
+      label.textColor = .black
+      label.textAlignment = .center
+      label.adjustsFontSizeToFitWidth = true
+      label.layer.cornerRadius = 20
+    //  label.isHidden = true
+      label.backgroundColor = .clear
+  return label
+  }()*/

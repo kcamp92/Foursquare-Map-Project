@@ -14,6 +14,7 @@
 		0B09871E237F3F660091E824 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B09871D237F3F660091E824 /* Bookmark.swift */; };
 		0B098720237F445C0091E824 /* CreateNewCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B09871F237F445C0091E824 /* CreateNewCollectionVC.swift */; };
 		0B098722237F58CD0091E824 /* DVC Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B098721237F58CD0091E824 /* DVC Model.swift */; };
+		0B0987242382E0300091E824 /* createCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0987232382E0300091E824 /* createCell.swift */; };
 		0B88AAC32370B9FF002D44BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAC22370B9FF002D44BF /* AppDelegate.swift */; };
 		0B88AAC52370B9FF002D44BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B88AAC42370B9FF002D44BF /* SceneDelegate.swift */; };
 		0B88AACC2370BA01002D44BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B88AACB2370BA01002D44BF /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		0B09871D237F3F660091E824 /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
 		0B09871F237F445C0091E824 /* CreateNewCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewCollectionVC.swift; sourceTree = "<group>"; };
 		0B098721237F58CD0091E824 /* DVC Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DVC Model.swift"; sourceTree = "<group>"; };
+		0B0987232382E0300091E824 /* createCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createCell.swift; sourceTree = "<group>"; };
 		0B88AABF2370B9FF002D44BF /* Foursquare-Map-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Foursquare-Map-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B88AAC22370B9FF002D44BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B88AAC42370B9FF002D44BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				0B88AB3423737F7B002D44BF /* mapCell.swift */,
 				0B098717237B711F0091E824 /* listCell.swift */,
 				0BA9D77B237AFA6C003F4EC1 /* collectionCell.swift */,
+				0B0987232382E0300091E824 /* createCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				0B88AAF72370C97C002D44BF /* ZipCodeHelper.swift in Sources */,
 				0BA9D77C237AFA6D003F4EC1 /* collectionCell.swift in Sources */,
 				0B88AAE62370C13C002D44BF /* Secrets.swift in Sources */,
+				0B0987242382E0300091E824 /* createCell.swift in Sources */,
 				0B098716237B70EB0091E824 /* ListController.swift in Sources */,
 				0B098722237F58CD0091E824 /* DVC Model.swift in Sources */,
 				0B88AAFD2370C9DA002D44BF /* VenueSearchAPIClient.swift in Sources */,
