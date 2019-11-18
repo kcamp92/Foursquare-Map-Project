@@ -80,6 +80,7 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
             guard self.venuePics.count == self.venueData.count else {
                 return
             }
+            navigationItem.rightBarButtonItem?.isEnabled = true 
             foodCollectionView.reloadData()
         }
     }
@@ -162,6 +163,7 @@ class SearchController: UIViewController, UICollectionViewDelegate, UICollection
     }
     
     private func loadImageData(venues:[Venue]){
+        navigationItem.rightBarButtonItem?.isEnabled = false
         for venue in venues {
             guard let id = venue.id else {
                 return

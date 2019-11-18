@@ -41,8 +41,8 @@ lazy var createCollectionView: UICollectionView = {
         layout.scrollDirection = .horizontal
         cv.backgroundColor = .clear
         cv.register(createCell.self, forCellWithReuseIdentifier: cellIdentifier)
-        cv.delegate = self
-        cv.dataSource = self
+       // cv.delegate = self
+       // cv.dataSource = self
         return cv
             }()
     
@@ -105,15 +105,15 @@ lazy var createCollectionView: UICollectionView = {
 
     // MARK: - Extensions
 
-extension CreateNewCollectionVC: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
-    }
-    
-    
-}
+//extension CreateNewCollectionVC: UICollectionViewDelegate, UICollectionViewDataSource {
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        <#code#>
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        <#code#>
+//    }
+//
+//
+//}
